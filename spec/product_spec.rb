@@ -1,3 +1,5 @@
+require 'rails_helper'
+
 RSpec.describe Product, type: :model do
   let(:product) { build(:product)}
   it "has a stock quantity that is an integer" do
