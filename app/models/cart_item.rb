@@ -7,8 +7,9 @@ class CartItem < ApplicationRecord
 
   def product_does_not_exceed_stock
     return if product.nil? || quantity.nil?
-    if product > product.stock_quantity
+    if product && quantity > product.stock_quantity
       errors.add(:quantity, 'cannot be greater than available')
     end
+    puts "Quantity: #{quantity}, Stock: #{product.stock_quantity}" if product && quantity
   end
 end
