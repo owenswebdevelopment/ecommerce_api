@@ -1,5 +1,11 @@
 class Api::CartController < ApplicationController
   skip_before_action :verify_authenticity_token
+
+  def index
+    cart_items = CartItem.all
+    render json: cart_items
+  end
+
   def create
     cart_item = CartItem.new(cart_params)
     if cart_item.save!

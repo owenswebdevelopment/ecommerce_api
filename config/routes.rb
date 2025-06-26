@@ -8,7 +8,8 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   # root "posts#index"
   namespace :api do
-    post "cart", to: "cart#create"
+    # post "cart", to: "cart#create"
+    resources :cart, only: [:index, :create]
     resources :products, only: [:index]
   end
 end
