@@ -2,7 +2,11 @@ class Api::CartController < ApplicationController
   skip_before_action :verify_authenticity_token
 
   def index
-    cart_items = CartItem.all
+    if params[:session_id].present?
+      cart_items = CartItem.where(session_id: params[:session_id])
+    else
+      cart_items = CartItem.all
+    end
     render json: cart_items
   end
 
